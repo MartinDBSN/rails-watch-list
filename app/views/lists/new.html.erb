@@ -1,0 +1,12 @@
+<div class="col-6 mx-auto">
+  <h1>Create a new list</h1>
+  <div>
+
+  <%= simple_form_for(@list) do |f| %>
+  <%= f.input :name, class: "form-control" %>
+  <%= f.input :details, class: "form-control" %>
+  <%= f.submit %>
+<% end %>
+</div>
+<%= link_to "Back to the list", lists_path %>
+</div>
