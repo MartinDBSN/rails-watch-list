@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @lists = List.all
+    @lists = List.includes(:bookmarks).all
   end
 
   def new
@@ -11,6 +11,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
+    @bookmarks = @list.bookmarks
   end
 
   def create
@@ -24,6 +25,12 @@ class ListsController < ApplicationController
     # else
     #   render :new, status: :unprocessable_entity
     # end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to list_path(@list)
   end
 
 private

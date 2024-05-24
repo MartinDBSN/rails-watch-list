@@ -1,7 +1,11 @@
 <div class="col-8 mx-auto">
   <h1>Create a bookmark</h1>
+
 <%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie %>
   <%= f.input :comment, class: "form-control" %>
   <%= f.submit %>
 <% end %>
+  <%= link_to "Back to the list", list_path(@list.id) %>
+
 </div>
